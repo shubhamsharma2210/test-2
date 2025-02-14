@@ -1,0 +1,219 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header Styles */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li {
+    color: whitesmoke;
+}
+.nav-links li:hover {
+    color: goldenrod;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+.nav-links a:hover{
+    color: goldenrod;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Responsive of header page */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 50px;
+        background-color: #333;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        /* transform: translateX(100%); */
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.3s ease-in;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-active {
+        /* transform: translateX(0); */
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* form css */
+body{
+    background-color: #c9d6ff;
+}
+.container{
+    background-color: white;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow:0px 20px 35px rgb(112, 110, 110) ;
+    
+}
+form{
+    margin: 0.8rem;
+}
+.form-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+input{
+    color:inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    padding-left: 1.5rem;
+    font-size: 20px;
+
+}
+.input-group{
+    padding: 1% 0;
+    position: relative;
+}
+
+input:focus{
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: 2px solid rgb(97, 13, 13);
+}
+input::placeholder{
+    color: transparent;
+}
+label{
+    color: #757577;
+    position: relative;
+    left: 1.2rem;
+    top: -1.3rem;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+input:focus~label, input:not(:placeholder-shown)~label{
+    top: -3rem;
+    color: hsl(327, 90%, 28%);
+    font-size: 15px;
+}
+.btn{
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+    background-color: rgb(90, 90, 233);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+p{
+    text-align: center;
+    font-size: 28px;
+
+}
+.icons{
+    font-size: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.links{
+    display: flex;
+    justify-content: end;
+    gap: 4px;
+    margin-top: 10px;
+}
+.links p{
+    font-size: 16px;
+    text-align: end;
+}
+.links button{
+    border: none;
+    outline: none;
+    color: blue;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    
+
+}
+
+/* table css */
+.table-container {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4;
+}
+/* responsive table  */
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        padding: 8px;
+    }
+}
