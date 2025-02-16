@@ -11,14 +11,15 @@
 
 <body>
     <div class="container" id="login">
+        <div style="text-align:center;" id="errorMessages" class="error-messages"></div>
         <h1 class="form-title">Login</h1>
         <form id="loginForm" method="post">
             <div class="input-group">
-                <input type="email" id="email" name="email" placeholder="Email" required />
+                <input type="email" id="email" name="email" placeholder="Email"  />
                 <label for="email">Email</label>
             </div>
             <div class="input-group">
-                <input type="password" name="password" id="password" placeholder="Password" required />
+                <input type="password" name="password" id="password" placeholder="Password"  />
                 <label for="password">Password</label>
             </div>
             <button type="submit" class="btn">Login</button>

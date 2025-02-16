@@ -1,8 +1,8 @@
-<?php 
+<?php
+session_start();
 include('header.php');
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,30 +14,26 @@ include('header.php');
 </head>
 <body>
 <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Shubham sharma</td>
-                    <td>shubham@gmail.com</td>
-                    <td>8979005755</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>karan sharma</td>
-                    <td>karan@gmail.com</td>
-                    <td>7900250316</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if (isset($_SESSION['fullName']) && isset($_SESSION['email'])) {
+                echo "<tr>";
+                echo "<td>" . $_SESSION['fullName'] . "</td>";
+                echo "<td>" . $_SESSION['email'] . "</td>";
+                echo "</tr>";
+            } else {
+                echo "<tr><td colspan='2'>No user data available.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

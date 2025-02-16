@@ -22,10 +22,10 @@ if ($password !== $confirmPassword) {
 }
 
 // Hash password before storing
-$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+$hashedPassword = md5($password);
 
 // Insert user data into database
-$query = "INSERT INTO users (fullName, email, password) VALUES ('$fullName', '$email', '$password')";
+$query = "INSERT INTO users (fullName, email, password) VALUES ('$fullName', '$email', '$hashedPassword')";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

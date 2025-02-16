@@ -1,9 +1,23 @@
+// header script
+
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+});
+
+// regsiter script
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const registerForm = document.getElementById("registerForm");
-  const loginForm = document.getElementById("loginForm");
+  const errorMessagesDiv = document.getElementById("errorMessages");
+
 
   registerForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+  
 
     const fullName = document.getElementById("fullName").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -22,23 +36,23 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      const response = await fetch("action.php", {
+      const response = await fetch("Registeraction.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      console.log(response);
+     
 
       const result = await response.json();
-      console.log(result)
+  
      
 
       if (result.success) {
           window.location.href = "login.php";
       }
     } catch (error) {
-      console.error("Error:", error);
-    //   alert("An error occurred. Please try again.");
+   
+      displayError("An error occurred. Please try again.",error);
     }
   });
 
@@ -47,33 +61,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
-    if (!fullName) return alert("Full Name cannot be empty."), false;
+    if (!fullName) return displayError("Full Name cannot be empty."), false;
     if (!emailPattern.test(email))
-      return alert("Please enter a valid email."), false;
+      return displayError("Please enter a valid email."), false;
     if (!passwordPattern.test(password))
       return (
-        alert(
+        displayError(
           "Password must contain at least 6 characters, including uppercase, lowercase, number, and special character."
         ),
         false
       );
     if (password !== confirmPassword)
-      return alert("Passwords do not match."), false;
+      return displayError("Passwords do not match."), false;
 
     return true;
   }
+// display error
+
 // login form
+function displayError(message) {
+  errorMessagesDiv.innerHTML = message;
+  errorMessagesDiv.style.color = "red";
+}
 
 });
 
 
 
-
+// Login script
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("loginForm");
+    const errorMessagesDiv = document.getElementById("errorMessages");
+
   
     if (loginForm) {
       loginForm.addEventListener("submit", async function (e) {
@@ -96,13 +118,17 @@ document.addEventListener("DOMContentLoaded", function () {
           if (result.success) {
             window.location.href = 'index.php';
           } else {
-            alert(result.message);
+            displayError(result.message);
           }
         } catch (error) {
-          console.error("Error:", error);
+          displayError("Error:", error);
         
         }
       });
+    }
+    function displayError(message) {
+      errorMessagesDiv.innerHTML = message;
+      errorMessagesDiv.style.color = "red";
     }
   });
   
